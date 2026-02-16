@@ -12,17 +12,17 @@
     @keyframes pulse-glow {
       0% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(81, 45, 168, 0.7);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
       }
 
       70% {
         transform: scale(1.05);
-        box-shadow: 0 0 0 15px rgba(81, 45, 168, 0);
+        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
       }
 
       100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(81, 45, 168, 0);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
       }
     }
 
@@ -30,10 +30,67 @@
       animation: pulse-glow 2.5s infinite;
     }
 
+    .try-luca-btn button {
+      cursor: pointer;
+      padding: 12px 35px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 500;
+      border: 2px solid #fff !important;
+      border-radius: 30px;
+      background-color: #000 !important;
+      color: #fff !important;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      z-index: 1;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .try-luca-btn button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent);
+      transition: none;
+      z-index: 2;
+    }
+
+    .try-luca-btn button:hover::before {
+      left: 150%;
+      transition: all 0.8s ease;
+    }
+
     .try-luca-btn button:hover {
       animation: none !important;
-      transform: scale(1.1) !important;
-      box-shadow: 0 10px 25px rgba(81, 45, 168, 0.5) !important;
+      transform: translateY(-3px) scale(1.05) !important;
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2) !important;
+      background-color: #111 !important;
+    }
+
+    /* Subtle background flow effect */
+    .try-luca-btn button::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      transition: width 0.4s ease;
+      z-index: -1;
+    }
+
+    .try-luca-btn button:hover::after {
+      width: 100%;
     }
   </style>
 </head>
@@ -79,20 +136,7 @@
         </div>
         <div class="try-luca-btn" style="width: 100%; display: flex; justify-content: flex-start; margin-top: 20px;">
           <a href="LUCA.html" style="text-decoration: none;">
-            <button class="animate-pulse-glow" style="
-              cursor: pointer;
-              padding: 12px 35px;
-              font-family: remV, sans-serif;
-              font-size: 16px;
-              font-weight: 500;
-              border: unset;
-              border-radius: 30px;
-              background-color: #512da8;
-              color: #fff;
-              transition: 0.3s;
-              box-shadow: 0 4px 15px rgba(81, 45, 168, 0.3);
-            " onmouseover="this.style.backgroundColor='#fff'; this.style.color='#512da8'"
-              onmouseout="this.style.backgroundColor='#512da8'; this.style.color='#fff'">
+            <button class="animate-pulse-glow">
               TRY LUCA
             </button>
           </a>
